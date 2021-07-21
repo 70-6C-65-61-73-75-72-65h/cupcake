@@ -1,0 +1,24 @@
+nav {
+  display: inline;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  /* width: 100vh; */
+}
+
+.site-header__wrapper {
+  gap: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 100vh; */
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+}

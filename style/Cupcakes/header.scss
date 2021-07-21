@@ -1,0 +1,48 @@
+.header {
+  //   width: 100%;
+  width: 100vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > * {
+    margin: 16px 38px;
+  }
+
+  & .shopping-cart {
+    position: relative;
+    // display: flex;
+    margin-left: auto;
+    & .number {
+      position: absolute;
+      left: calc(50% - 8px / 2 + 13px);
+      top: calc(50% - 17px / 2 - 9.75px);
+      font-size: 14px;
+      line-height: 17px;
+    }
+    // background: url("~@static/icons/ShoppingCart.svg") no-repeat;
+    // background-size: 52px 44.5px;
+  }
+
+  & nav {
+    display: flex;
+    // should replaced with margin-left for each children except last one
+    gap: 20px;
+
+    font-size: 18px;
+    line-height: 22px;
+
+    & .item {
+      &:hover {
+        cursor: pointer;
+      }
+      font-weight: normal;
+
+      &.active {
+        transition: 500ms font-weight;
+        font-weight: 900;
+      }
+    }
+  }
+}

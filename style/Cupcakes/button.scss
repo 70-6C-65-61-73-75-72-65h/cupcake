@@ -1,0 +1,22 @@
+.button {
+  color: #fbfac9;
+  background: #642c99;
+  border-radius: 8px;
+
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+
+  width: 206px;
+  height: 43px;
+
+  &.send {
+    background: #fbfac9;
+    color: #642c99;
+    width: 106px;
+  }
+  &.order {
+    width: 322px;
+    height: 59px;
+  }
+}

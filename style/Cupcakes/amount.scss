@@ -1,0 +1,40 @@
+.amount {
+  background: transparent;
+
+  width: 100px;
+  height: 43px;
+  border: 2px solid #642c99;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  position: relative;
+  // to center amount value
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .plus {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  & .minus {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  & .plus,
+  .minus {
+    &:active {
+      & > .svg > .path {
+        stroke: #2f0e50;
+      }
+    }
+  }
+}

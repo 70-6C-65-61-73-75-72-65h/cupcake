@@ -1,0 +1,14 @@
+@import "reset.scss";
+@import "fonts.scss";
+@import "variables.scss";
+@import "mixins.scss";
+
+@import "./Cupcakes/**/*.scss";
+
+body {
+  font-family: var(--font-body);
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0em;
+  color: #642c99;
+}

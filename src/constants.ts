@@ -16,6 +16,7 @@ export interface Icake {
   info: string;
   price: number;
   id: number;
+  // amount: number;
   //   amount: number;
   //   totalPrice: number;
 }
@@ -27,6 +28,7 @@ export const cardList: Icake[] = [
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
     id: 1,
+    // amount: 0,
   },
   {
     img: pc2,
@@ -35,6 +37,7 @@ export const cardList: Icake[] = [
       "A chocolate sponge, coloured naturally with beetroot and topped off with cream cheese.",
     price: 6.7,
     id: 2,
+    // amount: 0,
   },
   {
     img: pc3,
@@ -43,6 +46,7 @@ export const cardList: Icake[] = [
       "Homemade chocolate cupcakes topped with thick & creamy mint chocolate chip frosting.",
     price: 16.3,
     id: 3,
+    // amount: 0,
   },
   {
     img: pc1,
@@ -50,54 +54,110 @@ export const cardList: Icake[] = [
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
     id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 5,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 6,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 7,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 8,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 9,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 10,
+    id: 4,
+    // amount: 0,
   },
   {
     img: pc1,
     title: "Carrot",
     info: "Walnut-studded carrot cake with cinnamon cream cheese frosting",
     price: 5.4,
-    id: 11,
+    id: 4,
+    // amount: 0,
   },
 ];
+
+export interface IcakeOrder {
+  [key: number]: { itemTotalPrice: number; amount: number };
+}
+export interface Iorder {
+  // key - id of Icake; // value - amount of elemtents
+  collection: IcakeOrder;
+  totalItems: number;
+  totalPrice: number;
+  // should sum all amounts and itemTotalPrice of each cake.Id
+}
+// export const order: Iorder = {};
+
+export const minusRestriction = 0;
+export const plusRestriction = 10;
+
+export const closeIconSize = {
+  mobile: {
+    cart: {
+      width: 8.5,
+      height: 8.5,
+    },
+    confirmation: {
+      width: 10.5,
+      height: 10.5,
+    },
+  },
+  notMobile: {
+    cart: {
+      width: 17,
+      height: 17,
+    },
+    confirmation: {
+      width: 19,
+      height: 19,
+    },
+  },
+};
+
+export const checkoutHeader = {
+  primary: "Check out",
+  secondary: "Complete your order and we'll bring it to your door. ",
+};
+
+export const orderConstants = {
+  total: "Total to pay",
+  dollar: "$",
+};

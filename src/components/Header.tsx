@@ -1,4 +1,5 @@
 import ShoppingCart from "@src/icons/ShoppingCart";
+import { RootState, useTypedSelector } from "@src/reducers";
 import { paths } from "@src/Routes";
 import classNames from "@src/utils/classNames";
 import React, { useState, ReactElement } from "react";
@@ -8,6 +9,9 @@ interface Props {}
 
 export default function Header({}: Props): ReactElement {
   const [activeItem, setActiveItem] = useState<boolean | number>(false);
+
+  const order = useTypedSelector((state: RootState) => state.order);
+  console.log(order);
 
   const setActive = ({ target }) => {
     setActiveItem(+target.dataset.tag);
@@ -33,7 +37,7 @@ export default function Header({}: Props): ReactElement {
         </Link>
       </nav>
       <ShoppingCart
-        itemsNumber={8}
+        itemsNumber={order.totalItems}
         href={paths.checkout}
         onClick={() => setActiveItem(false)}
       />

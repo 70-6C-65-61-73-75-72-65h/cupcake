@@ -1,0 +1,97 @@
+.cart {
+  position: absolute;
+  width: 484px;
+}
+
+// up to 375px
+@media (max-width: 480px) {
+  .cart {
+    width: 242px;
+    // height: 364.5px;
+
+    // margin: 58px 12px 0px;
+    margin: 0px 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+      height: 58px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &-close {
+        align-self: flex-start;
+      }
+    }
+
+    &__title {
+      font-family: var(--font-pretty);
+      font-size: 16px;
+      line-height: 17px;
+      //   position: absolute;
+      //   top: 23px;
+      //   left: 8px;
+      color: #642c99;
+    }
+
+    &__close {
+      //   add element from component side
+      //   position: absolute;
+      //   top: 20px;
+      //   right: 9px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      //   margin: 58px 12px 0px;
+
+      &-order {
+        flex-grow: 1;
+
+        //   between element rows
+        gap: 12px;
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 21px 0px;
+
+        border-bottom: 1px solid #642c99;
+        border-top: 1px solid #642c99;
+
+        &-item {
+          display: flex;
+          flex-direction: row;
+          gap: 9px;
+          font-weight: bold;
+          font-size: 10px;
+          line-height: 12px;
+          &.price {
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 16px;
+          }
+        }
+      }
+
+      &-paycheck {
+        padding: 18px 0px 23px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; // may  baseline
+      }
+    }
+  }
+}
+
+// other
+//  in cart (margin: 25px 18px)
+
+// mobile
+// in cart (margin: 8px 5px 20px)

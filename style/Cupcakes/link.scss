@@ -1,0 +1,21 @@
+.link {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+
+  color: #fdefd1;
+
+  &.viewCart {
+    color: #642c99;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+}
+@media (max-width: 480px) {
+  .link {
+    &.viewCart {
+      font-size: 8px;
+      line-height: 10px;
+    }
+  }
+}

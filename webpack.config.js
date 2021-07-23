@@ -1,5 +1,5 @@
 const path = require("path");
-const Dotenv = require("dotenv-webpack"); 
+const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (env, options) => ({
@@ -22,6 +22,7 @@ module.exports = (env, options) => ({
       "@components": path.resolve(__dirname, "src/components"),
       "@pages": path.resolve(__dirname, "src/pages"),
       "@hooks": path.resolve(__dirname, "src/hooks"),
+      "@actions": path.resolve(__dirname, "src/actions"),
       "@utils": path.resolve(__dirname, "src/utils"),
     },
   },
@@ -31,7 +32,7 @@ module.exports = (env, options) => ({
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [ 
+        use: [
           {
             loader: "babel-loader",
             options: {
@@ -42,7 +43,7 @@ module.exports = (env, options) => ({
               ],
             },
           },
-        ], 
+        ],
       },
       {
         test: /\.(sass|scss|css)$/,
@@ -69,15 +70,14 @@ module.exports = (env, options) => ({
 
         options: {
           name: env === "production" ? "[name]-[hash].[ext]" : "[name].[ext]",
-          publicPath: (url, resourcePath, context) => { 
+          publicPath: (url, resourcePath, context) => {
             if (/images.*svg/.test(resourcePath)) {
               return `/static/images/${url}`;
-            } 
+            }
 
             return `/static/icons/${url}`;
           },
         },
- 
       },
       // fonts
       {

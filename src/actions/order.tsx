@@ -1,6 +1,6 @@
 import { Icake } from "@src/constants";
 
-type Dispatcher = (_: any) => {};
+// type Dispatcher = (_: any) => {};
 
 export enum Type {
   AddCake,

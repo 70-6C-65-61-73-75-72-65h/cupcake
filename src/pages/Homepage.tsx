@@ -1,51 +1,69 @@
 // import classNames from '@src/utils/classNames'
-import React, { ReactElement, useContext, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import classNames from "@src/utils/classNames";
 
 import homepage1 from "@static/images/homepage1.svg";
 import homepage2_1 from "@static/images/homepage2_1.svg";
 import homepage2_2 from "@static/images/homepage2_2.svg";
 import homepage3 from "@static/images/homepage3.svg";
-import { cardList, Icake } from "@src/constants";
+import {
+  cardList as cl,
+  Icake,
+  minusRestriction,
+  plusRestriction,
+} from "@src/constants";
 import Amount from "@src/components/Amount";
 import Button from "@src/components/Button";
 // import { AppContext } from "@src/App";
 import { addCake, removeCake } from "@src/actions/order";
 import { useDispatch } from "react-redux";
-
+import { useTypedSelector } from "@src/reducers";
+import { setCardList } from "@src/actions/cardlist";
+// import { IcakeOrder } from "@src/constants";
 
 // removeCake restriction less then 0
-// 
+//
 export const CakeCard = ({ cake }: { cake: Icake }) => {
-         //   const { order, orderDispatch } = useContext(AppContext);
+  //   const { order, orderDispatch } = useContext(AppContext);
 
-         const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-         const increase = () => dispatch(addCake(cake));
+  const cakeOrder = useTypedSelector(
+    (state) => state?.order?.collection[cake.id]
+  );
+  console.log(cakeOrder);
 
-         const decrease = () => dispatch(removeCake(cake));
+  const increase = () =>
+    cakeOrder.amount < plusRestriction && dispatch(addCake(cake));
+  // minusRestriction > cakeOrder.totalItem;
+  // plusRestriction dispatch(addCake(cake));
 
-         return (
-           <div className="card">
-             <div className="card__img">{cake.img}</div>
-             <div className="card__title">{cake.title}</div>
-             <div className="card__info">{cake.info}</div>
-             <div className="card-actions">
-               <Button>ADD TO CART</Button>
-               {/* number of elements === order.amount */}
-               <Amount
-                 amount={order.amount}
-                 increase={increase}
-                 decrease={decrease}
-               />
-             </div>
-           </div>
-         );
-       };
+  const decrease = () =>
+    cakeOrder.amount > minusRestriction && dispatch(removeCake(cake));
+
+  return (
+    <div className="card">
+      <div className="card__img">
+        <img src={cake.img} alt="cake" />
+      </div>
+      <div className="card__title">{cake.title}</div>
+      <div className="card__info">{cake.info}</div>
+      <div className="card-actions">
+        <Button>ADD TO CART</Button>
+        {/* number of elements === order.amount */}
+        <Amount
+          amount={cakeOrder.amount}
+          increase={increase}
+          decrease={decrease}
+        />
+      </div>
+    </div>
+  );
+};
 
 interface HomepageCatalogProps {
   title: string;
-  cardList?: Icard[];
+  cardList?: Icake[];
 }
 
 export const HomepageCatalog = ({ title, cardList }: HomepageCatalogProps) => {
@@ -95,7 +113,9 @@ export const HomepageInfo = ({
         style={!imgRight && { order: -1 }}
       >
         {Array.isArray(illustration) ? (
-          illustration.map((imgInfo) => <img src={imgInfo} alt="Data" />)
+          illustration.map((imgInfo, key) => (
+            <img key={key} src={imgInfo} alt="Data" />
+          ))
         ) : (
           <img src={illustration} alt="Data" />
         )}
@@ -105,6 +125,15 @@ export const HomepageInfo = ({
 };
 
 export default function Homepage(): ReactElement {
+  // const [cardList, setCardList] = useState();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // like api call to retrieve elements
+    dispatch(setCardList(cl));
+  }, []);
+
+  const cardList = useTypedSelector((state) => state?.cardlist);
+
   return (
     <div className="homepage">
       <HomepageInfo

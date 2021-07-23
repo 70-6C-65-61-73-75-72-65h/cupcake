@@ -23,6 +23,7 @@ export default function App({}: Props): ReactElement {
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
+      <Modal />
     </Provider>
     // </AppContext.Provider>
   );
